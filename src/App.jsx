@@ -85,12 +85,94 @@ function ElementExpressions() {
   );
 }
 
+const isLoggedIn = true;
+
+function getUserContent(userStatus) {
+  return (
+    userStatus === "admin" ? (
+      <>
+        <h2>Admin Dashboard</h2>
+        <button>Manage Users</button>
+      </>
+    ) : userStatus === "member" ? (
+        <p>Welcome to the community!</p>
+    ) : (
+      <a href="/signup">Sign up here</a>
+    )
+  );
+}
+
+const hasMessage = true;
+
+// message가 truely 값이면 출력, null이면 뒤에 있는 값 출력
+const message = null;
+
 function App() {
   
+  const fruits = ['Apple', 'Banana', 'Cherry'];
+
+  const books = [
+    { id: 1, title: 'React Basics', published: true, publisher: 'Manning' },
+    { id: 2, title: 'Advanced Hooks', published: false, publisher: 'OReilly' },
+    { id: 3, title: 'JSX in Depth', published: true, publisher: 'Packt' },
+  ];
+
+  const publisheds = books.filter(book => book.published);
+
   return (
     <>
-      <h1>JSX</h1>
-      <ElementExpressions />
+      {/* // 조건부 렌더링
+      {isLoggedIn ? <h1>Hello!</h1> : <h1>Sign in</h1> }
+      {isLoggedIn ? (
+        <>
+          <h2>Welcome back!</h2>
+          <p>You are logged in. Enjoy your time here!</p>
+        </>
+      ) : (
+        <>
+          <h2>Hello, Guest!</h2>
+          <p>Please log in to access more features.</p>
+        </>
+      )} */}
+
+        {/* {getUserContent("admin")} */}
+
+        {/* {hasMessage && <h2>You have new message!</h2>}
+        {message && <p>Message: {message}</p>} */}
+
+        {/* <p>
+          Message: {message ?? <em>No message</em>}
+        </p>
+        <p>
+          Message: {message || <em>Empty</em>}
+        </p> */}
+
+        {/* {[0, 123, 'A', 'Hello', true, false]} */}
+
+        {/* // 리스트 렌더링
+         {[
+          <button>A</button>,
+          <button>B</button>,
+          <button>C</button>
+        ]} */}
+
+        {/*
+        <ul>
+          {fruits.map((fruit, index) => (
+            <li key={index}>{fruit}</li>
+          ))}
+        </ul>
+        */}
+
+        {publisheds.length > 0 && <h2>Published Books</h2>}
+        {publisheds.length ?
+          publisheds.map(book =>
+            <article key={book.id}>
+              <strong>{book.title}</strong>
+              <em> - {book.publisher}</em>
+            </article>
+          )
+        : <p>No published books found.</p>}
     </>
   )
 }
