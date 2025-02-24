@@ -1,13 +1,16 @@
 import './App.css';
+import reactLogo from './assets/react.png';
+import ButtonA from './ButtonA';
+import ButtonB from './ButtonB';
 
-const element1 = <h2>Hello, World!</h2>
+const element1 = <h2>Hello, World!</h2>;
 const element2 = (
   <ul>
     <li>A</li>
     <li>B</li>
     <li>C</li>
   </ul>
-)
+);
 
 function BasicExpressions() {
   const name = "John";
@@ -119,6 +122,31 @@ function App() {
 
   const publisheds = books.filter(book => book.published);
 
+  const disabledInput = true;
+
+  const reactLogoAlt = "React Logo";
+  console.log(reactLogo);
+
+
+  const divStyle = {
+    backgroundColor: 'lightblue',
+    margin: '12px',
+    padding: '20px',
+    borderRadius: '8px'
+  }
+
+  const styleA = {
+    color: 'darked',
+    fontWeight: 'bold',
+  }
+
+  const styleB = {
+    color: 'navy',
+    textDecoration: 'underline',
+  }
+
+  const isPrimary = false;
+
   return (
     <>
       {/* // 조건부 렌더링
@@ -164,7 +192,7 @@ function App() {
         </ul>
         */}
 
-        {publisheds.length > 0 && <h2>Published Books</h2>}
+        {/* {publisheds.length > 0 && <h2>Published Books</h2>}
         {publisheds.length ?
           publisheds.map(book =>
             <article key={book.id}>
@@ -172,7 +200,85 @@ function App() {
               <em> - {book.publisher}</em>
             </article>
           )
-        : <p>No published books found.</p>}
+        : <p>No published books found.</p>} */}
+
+        {/* JSX 속성
+        
+        <label
+        
+          htmlFor="username"      // for 
+        
+        >
+          Username:
+        </label>
+        <input
+          type="text"
+          id="username"
+
+          className='input-field' // class
+          autoComplete='off'      // autoComplete
+
+          maxLength={20}          // maxLength
+          spellCheck={true}       // spellCheck
+          readOnly={false}        // readOnly
+          tabIndex={0}            // tabIndex
+
+          disabled={disabledInput} // disabled
+          placeholder={
+            disabledInput ? "(DISABLED)" : "Enter your username."
+          }
+        /> */}
+
+        {/* 이미지 렌더링 
+        <img
+          src={reactLogo}
+          alt={reactLogoAlt}
+          width={256}
+          height={228}
+        />
+        */}
+
+        {/* 스타일 적용 
+        <span style={
+          {
+            fontWeight: 'bold',
+            fontStyle: 'italic'
+          }
+        }>
+          Bold & Italic
+        </span>
+        */}
+
+        {/* 스타일 객체 스프레딩 오버라이트 
+        <div style={divStyle}>
+          DIV 1
+        </div>
+        <div
+          style={{
+            ...divStyle,
+            backgroundColor: 'lightgreen',
+            color: 'darkblue',
+            fontWeight: 'bold',
+          }}>
+            DIV 2
+        </div>
+        */}
+
+        {/* 동적 스타일링
+        <div style={isPrimary ? styleA : styleB}>
+          This text has dynamic styling.
+        </div>
+        <span
+         style={{
+            fontSize: isPrimary ? '1.5em' : '1em',
+            opacity: isPrimary ? 1 : 0.5,
+          }}
+         >
+          So does this text.
+        </span> */}
+
+        <ButtonA />
+        <ButtonB />
     </>
   )
 }
